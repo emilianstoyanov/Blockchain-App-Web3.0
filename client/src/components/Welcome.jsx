@@ -6,11 +6,28 @@ import { Loader } from './';
 
 const commonStyles = "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
 
+const Input = ( {placeholder, name, type, value, handleChange} ) => (
+    <input 
+        placeholder={placeholder}
+        type={type}
+        step="0.0001"
+        value={value}
+        onChange={() => handleChange(e, name)}
+        className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism"
+    />
+);
+
 const Welcome = () => {
 
     const connetWallet = () => {
 
     }
+
+
+    const handleSubmit = () => {
+
+    }
+
     return (
         <div className="flex w-full justify-center items-center"> 
             <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
@@ -54,12 +71,39 @@ const Welcome = () => {
                                     <SiEthereum fontSize={21} color="#fff" />
                                 </div>
                                 <BsInfoCircle fontSize={17} color="#fff" />
-
+                            </div>
+                            <div>
+                                <p className="text-white font-light text-sm">
+                                    Address
+                                </p>
+                                <p className="text-white font-semibold text-lg mt-1">
+                                    Ethereum
+                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
+                        <Input placeholder="Address To" name="addressTo" type= "text" handleChange={() => {}} />
+                        <Input placeholder="Amount (ETH)" name="amount" type= "number" handleChange={() => {}} />
+                        <Input placeholder="Keyword (Gif)" name="keyword" type= "text" handleChange={() => {}} />
+                        <Input placeholder="Enter Message" name="message" type= "text" handleChange={() => {}} />
 
+                        <div className="h-[1px] w-full bg-gray-400 my-2" /> 
+
+                        {false ? (
+                            < Loader/>
+                        ) : (
+                            <button
+                                type="button"
+                                onClick={handleSubmit}
+                                className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] rounded-full cursor-pointer"
+                            > 
+                            Send Now
+                            </button>
+                        )}
+                    </div>
+
+                </div>
             </div>
         </div>
     );
