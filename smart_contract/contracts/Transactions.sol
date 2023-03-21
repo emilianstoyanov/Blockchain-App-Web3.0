@@ -22,16 +22,15 @@ contract Transtactions {
     function addToBlockchain(address payable receiver, uint amount, string memory message, string memory keyword) public {
         transactionCount += 1;
         transactions.push(TransterStruct(msg.sender, receiver, amount, message, block.timestamp, keyword));
+
+        emit Transfer(msg.sender, receiver, amount, message, block.timestamp, keyword);
     }
 
     function getAllTransactions() public view returns (TransterStruct[] memory) {
-        // return transactions;
-
+        return transactions;
     }
 
     function getTransactionCount() public view returns (uint256) {
-        // return transactionCounter;
-
-
+        return transactionCount;
     }
 }
