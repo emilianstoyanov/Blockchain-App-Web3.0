@@ -5,6 +5,8 @@ import App from "./App";
 import { TransactionProvider } from "./context/TransactionContext.jsx";
 import "./index.css";
 
+
+
 ReactDOM.render(
   <TransactionProvider>
     <React.StrictMode>
