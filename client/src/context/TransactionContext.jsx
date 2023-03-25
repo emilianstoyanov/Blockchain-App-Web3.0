@@ -10,9 +10,9 @@ const { ethereum } = window;
 const getEthereumContract = () => {
     const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = provider.getSigner();
-    const transactionContract = new ethers.Contract(contractAddress, contractABI, signer);
+    const transactionsContract = new ethers.Contract(contractAddress, contractABI, signer);
 
-    return transactionContract;
+    return transactionsContract;
 }
 
 export const TransactionProvider = ({ children }) => {
@@ -65,7 +65,7 @@ export const TransactionProvider = ({ children }) => {
             if (!ethereum) return alert("Please install MetaMask");
 
             const { addressTo, amount, keyword, message } = formData;
-            const transactionContract = getEthereumContract();
+            const transactionsContract = getEthereumContract();
             const parsedAmount = ethers.utils.parseEther(amount);
 
             await ethereum.request({ 
@@ -78,7 +78,7 @@ export const TransactionProvider = ({ children }) => {
                 }]
             });
 
-            const transactionHash = await transactionContract.addToBlockchain(addressTo, parsedAmount, message, keyword);
+            const transactionHash = await transactionsContract.addToBlockchain(addressTo, parsedAmount, message, keyword);
 
             setIsLoading(true);
             console.log(`Loading - ${transactionHash}`);
