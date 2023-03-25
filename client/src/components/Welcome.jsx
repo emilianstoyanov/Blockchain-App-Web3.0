@@ -1,3 +1,4 @@
+// import React, { useContext } from "react";
 import { AiFillAlipayCircle } from "react-icons/ai";
 import { SiEthereum } from 'react-icons/si';
 import { BsInfoCircle } from 'react-icons/bs';
@@ -19,6 +20,9 @@ const Input = ( {placeholder, name, type, value, handleChange} ) => (
 );
 
 const Welcome = () => {
+    // const { value } = useContext(TransactionContext);
+
+    // console.log(value);
 
     const connetWallet = () => {
 
