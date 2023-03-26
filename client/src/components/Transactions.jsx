@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import { TransactionContext } from "../context/TransactionContext";
 import dummyData from "../utils/dummyData";
 import { shortenAddress } from "../utils/shortenAddress";
+import useFetch from "../hooks/useFetch";
 
 
 const TransactionsCard = ({ addressTo, addressFrom, timestamp, message, keyword, amount, url }) => {
-    // const gifUrl = useFetch({ keyword });
+    const gifUrl = useFetch({ keyword });
   
     return (
       <div className="bg-[#181918] m-4 flex flex-1
@@ -24,7 +25,7 @@ const TransactionsCard = ({ addressTo, addressFrom, timestamp, message, keyword,
             <a href={`https://ropsten.etherscan.io/address/${addressTo}`} target="_blank" rel="noreferrer">
               <p className="text-white text-base">To: {shortenAddress(addressTo)}</p>
             </a>
-            <p className="text-white text-base">Amount:  ETH</p>
+            <p className="text-white text-base">Amount: {amount} ETH</p>
             {message && (
               <>
                 <br />
@@ -33,7 +34,7 @@ const TransactionsCard = ({ addressTo, addressFrom, timestamp, message, keyword,
             )}
           </div>
           <img
-            
+            src={gifUrl || url}
             alt="nature"
             className="w-full h-64 2xl:h-96 rounded-md shadow-lg object-cover"
           />
