@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { ethers } from 'ethers';
+import { ethers } from "ethers";
 
-import { contractABI, contractAddress } from '../utils/constants';
+import { contractABI, contractAddress } from "../utils/constants";
 
 export const TransactionContext = React.createContext();
 
@@ -84,13 +84,12 @@ export const TransactionsProvider = ({ children }) => {
             throw new Error("No ethereum object");
           }
         };
-      
 
     const connectWallet = async () => {
         try {
             if (!ethereum) return alert("Please install MetaMask.");
 
-            const accounts = await ethereum.request({ method: 'eth_requestAccounts', });
+            const accounts = await ethereum.request({ method: "eth_requestAccounts", });
 
             setCurrentAccount(accounts[0]);
             window.location.reload();
